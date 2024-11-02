@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить место проведения</title>
+</head>
+<body>
+<h1>Добавить место проведения</h1>
+<form th:action="@{/admin/venues/add}" th:object="${venue}" method="post">
+    <label for="name">Название:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required />
+
+    <label for="location">Местоположение:</label>
+    <input type="text" id="location" name="location" th:field="*{location}" required />
+
+    <button type="submit">Добавить место проведения</button>
+</form>
+<a href="/admin/venues">Назад к списку мест проведения</a>
+</body>
+</html>

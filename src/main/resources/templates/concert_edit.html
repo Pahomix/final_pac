@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать концерт</title>
+</head>
+<body>
+<h1>Редактировать концерт</h1>
+<form th:action="@{/admin/concerts/update/{id}(id=${concert.id})}" th:object="${concert}" method="post">
+    <label for="name">Название:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required/>
+
+    <label for="dateTime">Дата и время:</label>
+    <input type="datetime-local" id="dateTime" name="dateTime"
+           th:field="*{dateTime}" th:value="${concert.dateTime != null ? #temporals.format(concert.dateTime, 'yyyy-MM-dd''T''HH:mm') : ''}" required/>
+
+    <label for="location">Место проведения:</label>
+    <input type="text" id="location" name="location" th:field="*{location}" required/>
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+<a href="/admin/concerts">Назад к списку концертов</a>
+</body>
+</html>

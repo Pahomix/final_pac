@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новый концерт</title>
+    <link rel="stylesheet" th:href="@{/static/CSS/styles.css}">
+</head>
+<body>
+<h1>Добавить новый концерт</h1>
+<form th:action="@{/organizer/concert}" method="post">
+    <div>
+        <label for="name">Название:</label>
+        <input type="text" id="name" name="name" required />
+    </div>
+    <div>
+        <label for="dateTime">Дата и время:</label>
+        <input type="datetime-local" id="dateTime" name="dateTime" required />
+    </div>
+    <div>
+        <label for="location">Местоположение:</label>
+        <input type="text" id="location" name="location" required />
+    </div>
+    <button type="submit">Добавить</button>
+</form>
+<a href="/organizer/concerts">Назад к списку концертов</a>
+</body>
+</html>

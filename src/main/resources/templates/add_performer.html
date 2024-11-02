@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить исполнителя</title>
+</head>
+<body>
+<h1>Добавить исполнителя</h1>
+<form th:action="@{/admin/performers/add}" th:object="${performer}" method="post">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required />
+
+    <label for="genre">Жанр:</label>
+    <input type="text" id="genre" name="genre" th:field="*{genre}" />
+
+    <button type="submit">Добавить исполнителя</button>
+</form>
+<a href="/admin/performers">Назад к списку исполнителей</a>
+</body>
+</html>

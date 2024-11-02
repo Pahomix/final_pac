@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить оплату</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+<h2>Добавить оплату</h2>
+<form action="/admin/payments/add" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <div>
+        <label for="user">Пользователь:</label>
+        <select id="user" name="user.id" required>
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="amount">Сумма:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+    </div>
+    <div>
+        <label for="paymentDate">Дата оплаты:</label>
+        <input type="datetime-local" id="paymentDate" name="paymentDate">
+    </div>
+    <button type="submit">Сохранить</button>
+</form>
+<a href="/admin">Вернуться</a>
+</body>
+</html>

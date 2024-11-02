@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактировать пользователя</title>
+  <link rel="stylesheet" th:href="@{/CSS/admin_styles.css}">
+</head>
+<body>
+<div class="container">
+  <h1>Редактировать пользователя</h1>
+  <form action="#" th:action="@{/admin/users/update}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="hidden" th:name="id" th:value="${user.id}"/>
+
+    <label for="username">Имя пользователя:</label>
+    <input type="text" id="username" name="username" th:value="${user.username}" required/>
+
+    <label for="password">Новый пароль:</label>
+    <input type="password" id="password" name="password" th:value="${user.password}" placeholder="Оставьте пустым, если не хотите изменять"/>
+
+    <label for="role">Роль:</label>
+    <select id="role" name="role" required>
+      <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">Администратор</option>
+      <option value="ORGANIZER" th:selected="${user.role == 'ORGANIZER'}">Организатор</option>
+      <option value="CLIENT" th:selected="${user.role == 'CLIENT'}">Клиент</option>
+    </select>
+
+    <button type="submit">Сохранить изменения</button>
+    <button type="button" onclick="window.history.back();">Отмена</button>
+  </form>
+
+</div>
+</body>
+</html>

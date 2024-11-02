@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concerts</title>
+  <link rel="stylesheet" th:href="@{/CSS/styles.css}">
+</head>
+<body>
+<h2>Концерты</h2>
+<div th:each="concert : ${concerts}">
+  <h3 th:text="${concert.name}">Concert Name</h3>
+  <p>Date: <span th:text="${concert.dateTime}">2024-12-01</span></p>
+  <p>Location: <span th:text="${concert.location}">Venue</span></p>
+  <a th:href="@{/concert-details/{id}(id=${concert.id})}">View Details</a>
+</div>
+</body>
+</html>

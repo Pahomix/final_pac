@@ -1,0 +1,81 @@
+-- -- Очистка таблиц перед вставкой данных (если нужно)
+-- -- DELETE FROM ticket;
+-- -- DELETE FROM review;
+-- -- DELETE FROM payment;
+-- -- DELETE FROM concert;
+-- -- DELETE FROM performer;
+-- -- DELETE FROM venue;
+-- -- DELETE FROM "order";
+-- -- DELETE FROM "user";
+--
+-- -- Вставка пользователей только если их нет
+-- INSERT INTO "user" (username, password, role)
+-- SELECT 'admin', 'adminpassword', 'ADMIN'
+--     WHERE NOT EXISTS (SELECT 1 FROM "user" WHERE username = 'admin');
+--
+-- INSERT INTO "user" (username, password, role)
+-- SELECT 'organizer', 'organizerpassword', 'ORGANIZER'
+--     WHERE NOT EXISTS (SELECT 1 FROM "user" WHERE username = 'organizer');
+--
+-- INSERT INTO "user" (username, password, role)
+-- SELECT 'client', 'clientpassword', 'CLIENT'
+--     WHERE NOT EXISTS (SELECT 1 FROM "user" WHERE username = 'client');
+--
+-- -- Вставка мест проведения только если их нет
+-- INSERT INTO venue (name, location)
+-- SELECT 'Stadium A', 'Downtown City Center'
+--     WHERE NOT EXISTS (SELECT 1 FROM venue WHERE name = 'Stadium A');
+--
+-- INSERT INTO venue (name, location)
+-- SELECT 'Club B', 'Main Street 42'
+--     WHERE NOT EXISTS (SELECT 1 FROM venue WHERE name = 'Club B');
+--
+-- -- Вставка исполнителей только если их нет
+-- INSERT INTO performer (name, genre)
+-- SELECT 'Rock Band', 'Rock'
+--     WHERE NOT EXISTS (SELECT 1 FROM performer WHERE name = 'Rock Band');
+--
+-- INSERT INTO performer (name, genre)
+-- SELECT 'Jazz Group', 'Jazz'
+--     WHERE NOT EXISTS (SELECT 1 FROM performer WHERE name = 'Jazz Group');
+--
+-- -- Вставка концертов только если их нет
+-- INSERT INTO concert (name, date_time, location)
+-- SELECT 'Rock Concert', '2024-12-01 19:00:00', 'Stadium A'
+--     WHERE NOT EXISTS (SELECT 1 FROM concert WHERE name = 'Rock Concert');
+--
+-- INSERT INTO concert (name, date_time, location)
+-- SELECT 'Jazz Night', '2024-11-15 20:00:00', 'Club B'
+--     WHERE NOT EXISTS (SELECT 1 FROM concert WHERE name = 'Jazz Night');
+--
+-- -- Вставка билетов только если их нет
+-- INSERT INTO ticket (concert_id, user_id, price, is_available)
+-- SELECT 1, 1, 50.00, true
+--     WHERE NOT EXISTS (SELECT 1 FROM ticket WHERE concert_id = 1 AND user_id = 1);
+--
+-- INSERT INTO ticket (concert_id, user_id, price, is_available)
+-- SELECT 2, 2, 75.00, true
+--     WHERE NOT EXISTS (SELECT 1 FROM ticket WHERE concert_id = 2 AND user_id = 2);
+--
+-- -- Вставка отзывов только если их нет
+-- INSERT INTO review (user_id, concert_id, comment, rating)
+-- SELECT 3, 1, 'Amazing concert!', 5
+--     WHERE NOT EXISTS (SELECT 1 FROM review WHERE user_id = 3 AND concert_id = 1);
+--
+-- INSERT INTO review (user_id, concert_id, comment, rating)
+-- SELECT 2, 2, 'Great atmosphere.', 4
+--     WHERE NOT EXISTS (SELECT 1 FROM review WHERE user_id = 2 AND concert_id = 2);
+--
+-- -- Вставка платежей только если их нет
+-- INSERT INTO payment (user_id, amount, payment_date)
+-- SELECT 1, 100.00, '2024-10-01 14:00:00'
+--     WHERE NOT EXISTS (SELECT 1 FROM payment WHERE user_id = 1 AND amount = 100.00);
+--
+-- INSERT INTO payment (user_id, amount, payment_date)
+-- SELECT 2, 75.00, '2024-10-05 15:30:00'
+--     WHERE NOT EXISTS (SELECT 1 FROM payment WHERE user_id = 2 AND amount = 75.00);
+--
+-- -- Вставка заказов только если их нет
+-- INSERT INTO "orders" (user_id, order_date, total_amount)
+-- SELECT 1, '2024-10-10 12:00:00', 150.00
+--     WHERE NOT EXISTS (SELECT 1 FROM "orders" WHERE user_id = 1 AND total_amount = 150.00);

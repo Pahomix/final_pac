@@ -1,0 +1,114 @@
+body {
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #fff;
+}
+
+.user-info {
+    margin-left: auto; /* Отодвигаем информацию о пользователе вправо */
+}
+
+.logout-button {
+    padding: 5px 15px;
+    background-color: #c0392b; /* Красный цвет для кнопки выхода */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px; /* Скругление углов */
+    margin-left: 10px; /* Отступ от имени пользователя */
+}
+
+.logout-button:hover {
+    background-color: #e74c3c; /* Более светлый красный при наведении */
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background-color: #3a3a5a;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #5a5a9f;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Отступы между элементами */
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Вертикальное центрирование */
+    padding: 10px;
+    background-color: #2c2c3f; /* Цвет фона для пользователя */
+    border-radius: 5px; /* Скругление углов */
+    color: #fff; /* Цвет текста */
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px; /* Отступы между кнопками */
+}
+
+.edit-button,
+.delete-button {
+    padding: 5px 10px; /* Отступы внутри кнопок */
+    border: none;
+    border-radius: 3px; /* Скругление углов кнопок */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+}
+
+.edit-button {
+    background-color: #5a5a9f; /* Цвет для кнопки редактирования */
+    color: white; /* Цвет текста кнопки */
+}
+
+.delete-button {
+    background-color: #d9534f; /* Цвет для кнопки удаления */
+    color: white; /* Цвет текста кнопки */
+}
+
+.edit-button:hover {
+    background-color: #7a7abf; /* Цвет при наведении */
+}
+
+.delete-button:hover {
+    background-color: #c9302c; /* Цвет при наведении */
+}
+

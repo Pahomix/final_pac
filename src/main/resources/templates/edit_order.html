@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать заказ</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h2>Редактировать заказ</h2>
+<form th:action="'/admin/orders/update/' + ${order.id}" method="post" th:object="${order}">
+    <label for="user">Пользователь:</label>
+    <select name="user.id" id="user" required>
+        <option value="" disabled>Выберите пользователя</option>
+        <!-- Генерация вариантов пользователей с выбором текущего -->
+        <th:block th:each="user : ${users}">
+            <option th:value="${user.id}" th:text="${user.username}" th:selected="${user.id} == ${order.user.id}"></option>
+        </th:block>
+    </select>
+
+    <label for="orderDate">Дата заказа:</label>
+    <input type="datetime-local" th:field="*{orderDate}" required>
+
+    <label for="totalAmount">Сумма заказа:</label>
+    <input type="number" step="0.01" th:field="*{totalAmount}" required>
+
+    <button type="submit">Обновить заказ</button>
+</form>
+</body>
+</html>
